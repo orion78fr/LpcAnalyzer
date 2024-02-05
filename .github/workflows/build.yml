@@ -20,5 +20,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Windows build
-          path: Analyzers/
+          path: Analyzers/lpc_analyzer.dll
           retention-days: 14
