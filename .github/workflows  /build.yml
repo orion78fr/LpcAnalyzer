@@ -1,0 +1,20 @@
+name: Build and exports
+on: [push, pull_request]
+
+jobs:
+  export-win:
+    name: Windows export
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Compiler
+        uses: ilammy/msvc-dev-cmd@v1.4.1
+      - name: Compile
+        run: mkdir build && cd build && cmake -GNinja -DCMAKE_BUILD_TYPE=Release .. && ninja
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Windows build
+          path: exports/win
+          retention-days: 14
