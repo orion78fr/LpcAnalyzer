@@ -7,16 +7,18 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           submodules: 'true'
-      - name: Compiler
-        uses: ilammy/msvc-dev-cmd@v1.4.1
+      - name: Set compiler as x64
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: amd64
       - name: Compile
         run: mkdir build && cd build && cmake -GNinja -DCMAKE_BUILD_TYPE=Release .. && ninja
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: Windows build
-          path: exports/win
+          path: Analyzers/
           retention-days: 14
