@@ -16,6 +16,8 @@ jobs:
           arch: amd64
       - name: Compile
         run: mkdir build && cd build && cmake -GNinja -DCMAKE_BUILD_TYPE=Release .. && ninja
+      - name: Debug list file
+        run: ls -laR
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
