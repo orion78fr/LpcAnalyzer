@@ -16,11 +16,9 @@ jobs:
           arch: amd64
       - name: Compile
         run: mkdir build && cd build && cmake -GNinja -DCMAKE_BUILD_TYPE=Release .. && ninja
-      - name: Debug list file
-        run: dir -R
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: Windows build
-          path: Analyzers/lpc_analyzer.dll
+          path: build/Analyzers/lpc_analyzer.dll
           retention-days: 14
