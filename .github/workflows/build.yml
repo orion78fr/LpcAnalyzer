@@ -17,7 +17,7 @@ jobs:
       - name: Compile
         run: mkdir build && cd build && cmake -GNinja -DCMAKE_BUILD_TYPE=Release .. && ninja
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Windows build
           path: build/Analyzers/lpc_analyzer.dll
